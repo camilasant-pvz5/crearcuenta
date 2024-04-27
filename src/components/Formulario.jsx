@@ -4,11 +4,18 @@ function Formulario({ setAlert }) {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   function enviarFormulario(e) {
     e.preventDefault();
-    if (user === "" || password === "" || confirmPassword === "") {
-      setAlert({ mensaje: "Debes completar todos los campos", color: "red" });
+   
+    const validarCorreo = (correo) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(correo);
+    };
+    
+    if (!validarCorreo(email)) {
+      setAlert({ mensaje: "El correo electrónico no es válido", color: "red" });
       return;
     }
 
@@ -20,6 +27,7 @@ function Formulario({ setAlert }) {
       setUser("");
       setPassword("");
       setConfirmPassword("");
+      setEmail("");
     }
 
     console.log({ user, password, confirmPassword });
@@ -27,8 +35,7 @@ function Formulario({ setAlert }) {
 
   return (
 
-
-    
+   
     <div className="form-container">
       <form onSubmit={enviarFormulario}>
         <input
@@ -37,6 +44,13 @@ function Formulario({ setAlert }) {
           type="text"
           onChange={(e) => setUser(e.target.value)}
         />
+        {  <input
+          placeholder="Correo electrónico"
+          value={email}
+          type="text"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+ }
         <input
           placeholder="Contraseña"
           type="password"
