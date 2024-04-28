@@ -16,7 +16,7 @@ function Registro() {
 <SocialButton icon="fab fa-linkedin-in fa-3x" />
 
 </div> 
-      <h3>O usa tu email para registrarte</h3>
+      <h4>O usa tu email para registrarte</h4>
       <Formulario setAlert={setAlert} 
       />
 

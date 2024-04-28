@@ -90,8 +90,8 @@ if (!user || !password || !confirmPassword || !email) {
           {showAlert && (
       // Código de Alert BEGIN
       <div className="contendorAlertas"> 
-      <Alert variant={errorColor}>
-        <Alert.Heading>{errorMessage}</Alert.Heading>
+      <Alert variant={errorColor} >
+        <Alert.Heading >{errorMessage}</Alert.Heading>
       </Alert> </div>
       // Código de Alert
       )}

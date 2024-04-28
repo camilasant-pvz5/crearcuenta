@@ -83,14 +83,14 @@ if (!user || !password || !confirmPassword || !email) {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">Registrarse</button>
+        <button type="submit"  className="btn btn-primary w-100">Registrarse</button>
       </form>
       
           
           {showAlert && (
       // Código de Alert BEGIN
       <div className="contendorAlertas"> 
-      <Alert variant={errorColor}>
+      <Alert variant={errorColor} >
         <Alert.Heading>{errorMessage}</Alert.Heading>
       </Alert> </div>
       // Código de Alert

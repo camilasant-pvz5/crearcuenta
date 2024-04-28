@@ -15,6 +15,7 @@ function App() {
     <div className="contenedor">
       <h1>Crea una cuenta</h1>
       <Registro setAlert={setAlert} alert={alert} />
+      
       </div>
       
     </>
