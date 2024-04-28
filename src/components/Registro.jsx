@@ -11,9 +11,9 @@ function Registro() {
     <>
     
 <div className="social-buttons">
-<SocialButton icon="fab fa-facebook-f" />
-<SocialButton icon="fab fa-github" />
-<SocialButton icon="fab fa-linkedin-in" />
+<SocialButton icon="fab fa-facebook fa-3x" />
+<SocialButton icon="fab fa-github fa-3x" />
+<SocialButton icon="fab fa-linkedin-in fa-3x" />
 
 </div> 
       <h3>O usa tu email para registrarte</h3>
@@ -21,7 +21,6 @@ function Registro() {
       />
 
    
-    
 
       {alert.mensaje && (
         <h1 style={{ color: alert.color }}>{alert.mensaje}</h1>

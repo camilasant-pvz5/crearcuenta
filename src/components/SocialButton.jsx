@@ -8,9 +8,7 @@ function SocialButton({ icon }) {
     </button>
     </>
 
-
-
-      
+    
 
   );
 }

@@ -63,6 +63,7 @@ function Formulario() {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <button type="submit">Registrarse</button>
+        
         {alert.show && (
           <Alert variant={alert.color} onClose={() => setAlert({ ...alert, show: false })} dismissible>
             <Alert.Heading>{alert.mensaje}</Alert.Heading>

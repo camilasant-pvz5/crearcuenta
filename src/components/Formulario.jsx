@@ -1,8 +1,5 @@
-
-
-
-
 import React, { useState } from "react";
+import Alert from "./Alert"
 
 function Formulario({ setAlert }) {
   const [user, setUser] = useState("");
