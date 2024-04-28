@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Registro from "./components/Registro";
 import SocialButton from "./components/SocialButton";
+import Formulario from "./components/Formulario"
+import Alert from "./components/Alert"
 
 import "./App.css";
 

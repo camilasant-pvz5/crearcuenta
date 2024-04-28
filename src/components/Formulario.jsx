@@ -1,3 +1,7 @@
+
+
+
+
 import React, { useState } from "react";
 
 function Formulario({ setAlert }) {
@@ -70,3 +74,4 @@ function Formulario({ setAlert }) {
 }
 
 export default Formulario;
+ 

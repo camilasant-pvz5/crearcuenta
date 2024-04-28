@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import Alert from 'react-bootstrap/Alert';
 
-function Alert({ setAlert, user, password, confirmPassword, setUser, setPassword, setConfirmPassword }) {
+function Formulario() {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [alert, setAlert] = useState({ show: false, mensaje: "", color: "" });
+
+  const validarCorreo = (correo) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(correo);
+  };
+
   function enviarFormulario(e) {
     e.preventDefault();
-    if (user === "" || password === "" || confirmPassword === "") {
-      setAlert({ mensaje: "Debes completar todos los campos", color: "red" });
+
+    if (!validarCorreo(email)) {
+      setAlert({ show: true, mensaje: "El correo electrónico no es válido", color: "danger" });
       return;
     }
 
     if (password !== confirmPassword) {
-      setAlert({ mensaje: "Las contraseñas deben coincidir", color: "red" });
+      setAlert({ show: true, mensaje: "Las contraseñas deben coincidir", color: "danger" });
       return;
     } else {
-      setAlert({ mensaje: "Registro exitoso", color: "green" });
+      setAlert({ show: true, mensaje: "Registro exitoso", color: "success" });
       setUser("");
       setPassword("");
       setConfirmPassword("");
+      setEmail("");
     }
 
     console.log({ user, password, confirmPassword });
@@ -31,6 +45,12 @@ function Alert({ setAlert, user, password, confirmPassword, setUser, setPassword
           onChange={(e) => setUser(e.target.value)}
         />
         <input
+          placeholder="Correo electrónico"
+          value={email}
+          type="text"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
           placeholder="Contraseña"
           type="password"
           value={password}
@@ -43,9 +63,15 @@ function Alert({ setAlert, user, password, confirmPassword, setUser, setPassword
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <button type="submit">Registrarse</button>
+        {alert.show && (
+          <Alert variant={alert.color} onClose={() => setAlert({ ...alert, show: false })} dismissible>
+            <Alert.Heading>{alert.mensaje}</Alert.Heading>
+          </Alert>
+        )}
       </form>
     </div>
   );
 }
 
-export default Alert;
+export default Formulario;
+  

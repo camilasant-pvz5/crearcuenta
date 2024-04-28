@@ -4,6 +4,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: rgb(227,254,141);
+  background: linear-gradient(225deg, rgba(227,254,141,1) 0%, rgba(171,255,173,1) 100%);
 }
 
 .container {
