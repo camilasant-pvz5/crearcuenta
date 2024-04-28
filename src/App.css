@@ -14,8 +14,7 @@ body {
 
 /* Estilos adicionales para el formulario */
 .form-container {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+   padding: 20px;
   border-radius: 5px;
 }
 
@@ -52,4 +51,34 @@ body {
 .error-message {
   color: red;
   margin-top: 10px;
+}
+
+.social-buttons{
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+    
+}
+
+.social-button{
+  padding: 20px;
+  border-radius: 60%;
+  width: 100px;
+  height: 100px;
+}
+
+.contenedor{
+  margin: 0;
+  padding: 10px;
+  background-color: white;
+  width: 400px;
+  height: 700px;
+  border-radius: 4%;
+}
+
+h3, h1{
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;;
+  text-align: center;
 }

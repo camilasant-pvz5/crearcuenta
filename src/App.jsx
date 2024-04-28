@@ -11,10 +11,14 @@ function App() {
 
   return (
     <>
-      <h1>Bienvenido a Pág web</h1>
+    <div className="contenedor">
+      <h1>Crea una cuenta</h1>
       <Registro setAlert={setAlert} alert={alert} />
+      </div>
       
     </>
+
+
   );
 }
 

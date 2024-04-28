@@ -6,16 +6,22 @@ function Registro() {
   const [alert, setAlert] = useState({ mensaje: "", color: "" });
 
   return (
+
+    
     <>
-      <h3>Completa el formulario</h3>
-      <Formulario setAlert={setAlert} />
-      
+    
+<div className="social-buttons">
+<SocialButton icon="fab fa-facebook-f" />
+<SocialButton icon="fab fa-github" />
+<SocialButton icon="fab fa-linkedin-in" />
+
+</div> 
+      <h3>O usa tu email para registrarte</h3>
+      <Formulario setAlert={setAlert} 
+      />
+
    
-      <div className="social-buttons">
-        <SocialButton icon="fab fa-facebook-f" />
-        <SocialButton icon="fab fa-linkedin-in" />
-        <SocialButton icon="fab fa-github" />
-      </div>
+    
 
       {alert.mensaje && (
         <h1 style={{ color: alert.color }}>{alert.mensaje}</h1>
