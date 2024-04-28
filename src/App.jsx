@@ -3,6 +3,7 @@ import Registro from "./components/Registro";
 import SocialButton from "./components/SocialButton";
 import Formulario from "./components/Formulario"
 import Alert from "./components/Alert"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./App.css";
 

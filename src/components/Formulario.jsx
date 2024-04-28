@@ -1,30 +1,49 @@
 import React, { useState } from "react";
-import Alert from "./Alert"
+import Alert from 'react-bootstrap/Alert';
 
-function Formulario({ setAlert }) {
+function Formulario() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [showAlert, setShowAlert] = useState(false); // Nuevo estado para controlar la visibilidad de la alerta
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorColor, setErrorColor] = useState("");
 
   function enviarFormulario(e) {
     e.preventDefault();
    
+if (!user || !password || !confirmPassword || !email) {
+      setErrorMessage("Todos los campos deben completarse.");
+      setErrorColor("danger");
+      setShowAlert(true);
+      return;
+    }
+
     const validarCorreo = (correo) => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(correo);
     };
     
     if (!validarCorreo(email)) {
-      setAlert({ mensaje: "El correo electrónico no es válido", color: "red" });
+      // Si la validación falla, muestra la alerta
+      setShowAlert(true);
+      setErrorMessage("No se validó el correo.");
+      setErrorColor("danger");
       return;
     }
 
     if (password !== confirmPassword) {
-      setAlert({ mensaje: "Las contraseñas deben coincidir", color: "red" });
+      // Si la validación falla, muestra la alerta
+      setErrorMessage("Las contraseñas no coinciden.");
+      setErrorColor("danger");
+      setShowAlert(true);
       return;
     } else {
-      setAlert({ mensaje: "Registro exitoso", color: "green" });
+      // Si la validación es correcta, muestra alerta de mensaje exitoso
+      setErrorColor("success");
+      setErrorMessage("Registro exitoso.");
+      setShowAlert(true);
       setUser("");
       setPassword("");
       setConfirmPassword("");
@@ -66,9 +85,23 @@ function Formulario({ setAlert }) {
         />
         <button type="submit">Registrarse</button>
       </form>
+      
+          
+          {showAlert && (
+      // Código de Alert BEGIN
+      <div className="contendorAlertas"> 
+      <Alert variant={errorColor}>
+        <Alert.Heading>{errorMessage}</Alert.Heading>
+      </Alert> </div>
+      // Código de Alert
+      )}
     </div>
   );
 }
 
 export default Formulario;
- 
+
+
+
+
+

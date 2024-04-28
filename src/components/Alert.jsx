@@ -6,26 +6,44 @@ function Formulario() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [alert, setAlert] = useState({ show: false, mensaje: "", color: "" });
-
-  const validarCorreo = (correo) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(correo);
-  };
+  const [showAlert, setShowAlert] = useState(false); // Nuevo estado para controlar la visibilidad de la alerta
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorColor, setErrorColor] = useState("");
 
   function enviarFormulario(e) {
     e.preventDefault();
+   
+if (!user || !password || !confirmPassword || !email) {
+      setErrorMessage("Todos los campos deben completarse.");
+      setErrorColor("danger");
+      setShowAlert(true);
+      return;
+    }
 
+    const validarCorreo = (correo) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(correo);
+    };
+    
     if (!validarCorreo(email)) {
-      setAlert({ show: true, mensaje: "El correo electrónico no es válido", color: "danger" });
+      // Si la validación falla, muestra la alerta
+      setShowAlert(true);
+      setErrorMessage("No se validó el correo.");
+      setErrorColor("danger");
       return;
     }
 
     if (password !== confirmPassword) {
-      setAlert({ show: true, mensaje: "Las contraseñas deben coincidir", color: "danger" });
+      // Si la validación falla, muestra la alerta
+      setErrorMessage("Las contraseñas no coinciden.");
+      setErrorColor("danger");
+      setShowAlert(true);
       return;
     } else {
-      setAlert({ show: true, mensaje: "Registro exitoso", color: "success" });
+      // Si la validación es correcta, muestra alerta de mensaje exitoso
+      setErrorColor("success");
+      setErrorMessage("Registro exitoso.");
+      setShowAlert(true);
       setUser("");
       setPassword("");
       setConfirmPassword("");
@@ -36,6 +54,8 @@ function Formulario() {
   }
 
   return (
+
+   
     <div className="form-container">
       <form onSubmit={enviarFormulario}>
         <input
@@ -44,12 +64,13 @@ function Formulario() {
           type="text"
           onChange={(e) => setUser(e.target.value)}
         />
-        <input
+        {  <input
           placeholder="Correo electrónico"
           value={email}
           type="text"
           onChange={(e) => setEmail(e.target.value)}
         />
+ }
         <input
           placeholder="Contraseña"
           type="password"
@@ -63,16 +84,21 @@ function Formulario() {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <button type="submit">Registrarse</button>
-        
-        {alert.show && (
-          <Alert variant={alert.color} onClose={() => setAlert({ ...alert, show: false })} dismissible>
-            <Alert.Heading>{alert.mensaje}</Alert.Heading>
-          </Alert>
-        )}
       </form>
+      
+          {/* Alerta de Bootstrap */}
+          {showAlert && (
+      // Código de Alert BEGIN
+      <div className="contendorAlertas"> 
+      <Alert variant={errorColor}>
+        <Alert.Heading>{errorMessage}</Alert.Heading>
+      </Alert> </div>
+      // Código de Alert
+      )}
     </div>
   );
 }
 
-export default Formulario;
+export default Alert;
+
   
